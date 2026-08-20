@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "contract_version": "1.2.0",
+  "model_metadata": {
+    "model_name": "MobileNetV4 Fruit Ripeness Classifier (Philippine Fruits)",
+    "iteration": "v5",
+    "backbone": "mobilenetv4_conv_small.e2400_r224_in1k",
+    "num_classes": 9,
+    "classes": [
+      "overripe-banana",
+      "overripe-mango",
+      "overripe-papaya",
+      "ripe-banana",
+      "ripe-mango",
+      "ripe-papaya",
+      "unripe-banana",
+      "unripe-mango",
+      "unripe-papaya"
+    ],
+    "input_resolution": [
+      224,
+      224,
+      3
+    ],
+    "training_framework": "PyTorch 2.x / timm",
+    "target_runtime": "TensorFlow Lite (Flutter / Android / iOS)"
+  },
+  "tensor_contract": {
+    "input_tensor": {
+      "name": "input_tensor",
+      "index": 0,
+      "shape": [
+        1,
+        224,
+        224,
+        3
+      ],
+      "dtype": "float32",
+      "channel_order": "RGB",
+      "normalization": {
+        "formula": "(pixel / 255.0 - mean) / std",
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      }
+    },
+    "output_tensor_standard": {
+      "name": "probabilities",
+      "index": 0,
+      "shape": [
+        1,
+        9
+      ],
+      "dtype": "float32",
+      "activation": "Softmax (Values sum to 1.0)"
+    },
+    "output_tensors_dual_heatmap": {
+      "output_0": {
+        "name": "probabilities",
+        "shape": [
+          1,
+          9
+        ],
+        "dtype": "float32"
+      },
+      "output_1": {
+        "name": "heatmap_feature_map",
+        "shape": [
+          1,
+          1,
+          7,
+          7
+        ],
+        "dtype": "float32",
+        "description": "Raw 7x7 spatial activation map. Bilinear-interpolate to 224x224 and overlay on UI if confidence < 0.75"
+      }
+    }
+  },
+  "edge_device_safeguards": {
+    "out_of_distribution_strategy": "Confidence Thresholding",
+    "rejection_threshold": 0.75,
+    "fallback_action": "Prompt user: 'Fruit not recognized or uncentered. Please align within target frame.'",
+    "user_confirmation_ui": "Mandatory user confirmation prompt on detection completion."
+  }
+}
