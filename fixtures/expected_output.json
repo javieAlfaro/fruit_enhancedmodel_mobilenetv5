@@ -1,17 +1,27 @@
 {
-  "fixture_description": "Standard synthetic grey tensor fixture for verification across mobile runtime.",
-  "input_resolution": "224x224x3",
-  "normalization_applied": "ImageNet Mean/Std Standardization",
-  "expected_scores": {
-    "overripe-banana": 4.8e-05,
-    "overripe-mango": 0.000121,
-    "overripe-papaya": 0.0,
-    "ripe-banana": 0.0,
-    "ripe-mango": 3e-06,
-    "ripe-papaya": 0.004791,
-    "unripe-banana": 0.993976,
-    "unripe-mango": 0.001022,
-    "unripe-papaya": 4e-05
-  },
-  "predicted_winner": "unripe-banana"
+  "fixtures": [
+    {
+      "fixture_id": "midgray_synthetic",
+      "image_file": "fixture_midgray_input.jpg",
+      "input_resolution": "224x224x3",
+      "description": "Standard synthetic grey tensor fixture for tensor parity verification across mobile runtimes.",
+      "expected_winner": "unripe-banana"
+    },
+    {
+      "fixture_id": "real_banana_overripe",
+      "image_file": "fixture_banana_overripe.jpg",
+      "input_resolution": "224x224x3",
+      "description": "Real Lakatan Banana test fixture with U2-Net background removal and black canvas letterboxing.",
+      "expected_winner": "overripe-banana",
+      "expected_confidence_range": [0.90, 0.99]
+    },
+    {
+      "fixture_id": "unsupported_dragonfruit_ood",
+      "image_file": "fixture_unsupported_dragonfruit.jpg",
+      "input_resolution": "224x224x3",
+      "description": "Out-of-Distribution (OOD) unsupported fruit fixture (Dragon Fruit).",
+      "expected_winner": "overripe-papaya",
+      "ood_classification": "Out-of-Distribution (Closed-set nearest centroid mapping)"
+    }
+  ]
 }

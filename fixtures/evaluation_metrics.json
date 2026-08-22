@@ -1,0 +1,38 @@
+{
+  "evaluation_title": "MobileNetV4 Fruit Ripeness Enhanced v5 Quantitative Evaluation",
+  "dataset_split": {
+    "total_images": 1088,
+    "train_split": 761,
+    "val_split": 163,
+    "test_split": 164
+  },
+  "overall_metrics": {
+    "test_accuracy_percentage": 97.56,
+    "correct_predictions": 160,
+    "total_test_samples": 164,
+    "macro_precision_percentage": 97.41,
+    "macro_recall_percentage": 97.41,
+    "macro_f1_score_percentage": 97.41
+  },
+  "per_class_metrics": {
+    "overripe-banana": {"precision": 94.12, "recall": 94.12, "f1_score": 94.12, "support": 17},
+    "overripe-mango": {"precision": 94.74, "recall": 94.74, "f1_score": 94.74, "support": 19},
+    "overripe-papaya": {"precision": 100.00, "recall": 100.00, "f1_score": 100.00, "support": 19},
+    "ripe-banana": {"precision": 92.86, "recall": 92.86, "f1_score": 92.86, "support": 14},
+    "ripe-mango": {"precision": 95.00, "recall": 95.00, "f1_score": 95.00, "support": 20},
+    "ripe-papaya": {"precision": 100.00, "recall": 100.00, "f1_score": 100.00, "support": 18},
+    "unripe-banana": {"precision": 100.00, "recall": 100.00, "f1_score": 100.00, "support": 23},
+    "unripe-mango": {"precision": 100.00, "recall": 100.00, "f1_score": 100.00, "support": 19},
+    "unripe-papaya": {"precision": 100.00, "recall": 100.00, "f1_score": 100.00, "support": 15}
+  },
+  "family_accuracies": {
+    "banana": {"accuracy_percentage": 96.30, "support": 54},
+    "mango": {"accuracy_percentage": 96.55, "support": 58},
+    "papaya": {"accuracy_percentage": 100.00, "support": 52}
+  },
+  "cultivar_confirmation": {
+    "banana": "Musa acuminata (Lakatan Cultivar)",
+    "mango": "Mangifera indica (Carabao / Manila Super Cultivar)",
+    "papaya": "Carica papaya (Red Lady / Solo Papaya)"
+  }
+}
